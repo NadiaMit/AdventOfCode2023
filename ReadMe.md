@@ -13,3 +13,8 @@ This was my try on the Advent of code of 2023 in Python. I've decided to use Pyt
 
 ## Run Days
 Simply run the wanted days file with python. (I used `python 3.11`)
+
+This for example runs day1:
+`python .\days\day1.py`
+
+For any other wanted day just simply exchange the 1 with the day's number!

@@ -12,3 +12,4 @@ This was my try on the Advent of code of 2023 in Python. I've decided to use Pyt
 - `helpers`: contains my `helpers.py` and `template.py` files. The helper files has some functions to read the input data an I am pretty sure, I will add some other helping functions if I see that puzzles will need some generic functionality more than once. And the template file is my base for every days puzzle.
 
 ## Run Days
+Simply run the wanted days file with python. (I used `python 3.11`)

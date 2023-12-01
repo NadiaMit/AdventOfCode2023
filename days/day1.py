@@ -8,15 +8,13 @@ import re
 day = helpers.get_current_day(__file__)
 input = helpers.read_input(day, test=False)
 
-# code for both parts
-calibration_values = []
 
 # part 1
+result_part_1 = 0
+
 for line in input.splitlines():
     digits = [char for char in line if char.isdigit()]
-    calibration_values.append(int(digits[0]+digits[-1]))
-
-result_part_1 = sum(calibration_values)
+    result_part_1 += int(digits[0] + digits[-1])
 
 
 # part 2
@@ -42,20 +40,12 @@ string_digits = {
     '9': 9
 }
 
-calibration_values = []
+result_part_2 = 0
 
 for line in input.splitlines():
-    digits = []
-    for key, value in string_digits.items():
-        idx = [m.start() for m in re.finditer(key, line)]
-        if(len(idx) != 0):
-            for i in idx:
-                digits.append([f"{value}", i])
-    
-    digits.sort(key=lambda x: x[1])
-    calibration_values.append(int(digits[0][0] + digits[-1][0]))
+    digits = re.findall("(?=([0-9]|one|two|three|four|five|six|seven|eight|nine))", line)
+    result_part_2 += string_digits[digits[0]]*10 + string_digits[digits[-1]]
 
-result_part_2 = sum(calibration_values)
 
 # run both parts and print the results
 print(f"--- Day {day}: ---")

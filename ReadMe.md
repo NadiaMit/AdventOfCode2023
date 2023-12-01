@@ -1,9 +1,9 @@
 ![](https://img.shields.io/badge/stars%20⭐-2-yellow)
 ![](https://img.shields.io/badge/days%20completed%20📅-1-blue)
 
-# Advent of Code 2023
+# Advent of Code 2023 in Python [![Python](https://skillicons.dev/icons?i=python)](https://skillicons.dev)
 
-This was my try on the Advent of code of 2023 in Python. I've decided to use Python because I've always wanted to learn it since everyone seems to really like it and also because I need it for some classes in University.
+This is my try on the Advent of code of 2023 challanges in Python. I've decided to use Python because I've always wanted to learn it since everyone seems to really like it and also because I need it for some classes in University.
 
 ## Structure
 
@@ -12,6 +12,7 @@ This was my try on the Advent of code of 2023 in Python. I've decided to use Pyt
 - `helpers`: contains my `helpers.py` and `template.py` files. The helper files has some functions to read the input data an I am pretty sure, I will add some other helping functions if I see that puzzles will need some generic functionality more than once. And the template file is my base for every days puzzle.
 
 ## Run Days
+
 Simply run the wanted days file with python. (I used `python 3.11`)
 
 This for example runs day1:

@@ -16,10 +16,10 @@ for line in input.splitlines():
     # split the line to get the game id and sets
     game, sets = line.split(':')
     
-    # for every color find every occurance using regex, split the sting to get only the number and then find the maximum
-    max_red = max([int(amount.split(' ')[0]) for amount in re.findall("\d+ red", sets)])
-    max_green = max([int(amount.split(' ')[0]) for amount in re.findall("\d+ green", sets)])
-    max_blue = max([int(amount.split(' ')[0]) for amount in re.findall("\d+ blue", sets)])
+    # for every color find every amount using regex and from them get the maximum
+    max_red = max([int(amount) for amount, _color in re.findall("(\d+) (red)", sets)])
+    max_green = max([int(amount) for amount, _color in re.findall("(\d+) (green)", sets)])
+    max_blue = max([int(amount) for amount, _color in re.findall("(\d+) (blue)", sets)])
     
     # part 1: check if the maximum of every color is smaller than the given numbers if so add the game ids to the result
     if max_red <= 12 and max_green <= 13 and max_blue <= 14:

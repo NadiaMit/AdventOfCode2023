@@ -15,7 +15,7 @@ result_part_1 = 0
 # part 2
 result_part_2 =  0
 
-# run both parts and print the results
+# print the results
 print(f"--- Day {day}: ---")
 print(f"Part 1: {result_part_1}")
 print(f"Part 2: {result_part_2}")

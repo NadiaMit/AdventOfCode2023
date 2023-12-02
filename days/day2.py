@@ -13,18 +13,23 @@ result_part_1 = 0
 result_part_2 =  0
 
 for line in input.splitlines():
+    # split the line to get the game id and sets
     game, sets = line.split(':')
+    
+    # for every color find every occurance using regex, split the sting to get only the number and then find the maximum
     max_red = max([int(amount.split(' ')[0]) for amount in re.findall("\d+ red", sets)])
     max_green = max([int(amount.split(' ')[0]) for amount in re.findall("\d+ green", sets)])
     max_blue = max([int(amount.split(' ')[0]) for amount in re.findall("\d+ blue", sets)])
     
+    # part 1: check if the maximum of every color is smaller than the given numbers if so add the game ids to the result
     if max_red <= 12 and max_green <= 13 and max_blue <= 14:
         result_part_1 += int(re.findall("\d+", game)[0])
     
+    # part 2: add the 'power' of all the maximum values
     result_part_2 += max_red*max_green*max_blue
 
 
-# run both parts and print the results
+# print the results
 print(f"--- Day {day}: ---")
 print(f"Part 1: {result_part_1}")
 print(f"Part 2: {result_part_2}")

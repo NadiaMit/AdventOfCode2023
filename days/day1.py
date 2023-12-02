@@ -13,11 +13,14 @@ input = helpers.read_input(day, test=False)
 result_part_1 = 0
 
 for line in input.splitlines():
+    # get out all digits of the line
     digits = [char for char in line if char.isdigit()]
+    # add only the first and last digit to the result
     result_part_1 += int(digits[0] + digits[-1])
 
 
 # part 2
+# dictionary for simpler string-to-int conversion
 string_digits = {
     'one': 1,
     'two': 2,
@@ -43,11 +46,13 @@ string_digits = {
 result_part_2 = 0
 
 for line in input.splitlines():
+    # find all occourences of a number or written number in the string (even if overlapping or double)
     digits = re.findall("(?=([0-9]|one|two|three|four|five|six|seven|eight|nine))", line)
+    # add only the first and last digit to the result
     result_part_2 += string_digits[digits[0]]*10 + string_digits[digits[-1]]
 
 
-# run both parts and print the results
+# print the results
 print(f"--- Day {day}: ---")
 print(f"Part 1: {result_part_1}")
 print(f"Part 2: {result_part_2}")

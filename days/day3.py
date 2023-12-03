@@ -75,8 +75,8 @@ result_part_1 = 0
 result_part_2 =  0
 
 part = ''
-is_part = 0
-is_gear_part = 0
+is_part = False
+is_gear_part = False
 
 gears = []
 part_gears = {}
@@ -89,34 +89,33 @@ for y in range(len(lines)):
             
             # check if its a part number
             check, _coordinates = check_part(lines, y, x)
-            is_part += check
+            if check:
+                is_part = True
             
             # check if it touches a gear
             check, coordinates = check_part(lines, y, x, gearCheck=True)
-            is_gear_part += check
             if check:
+                is_gear_part = True
                 gears.append(coordinates)
         
         # if its not a digit
         else:
-            # check if a part number just ended
-            if(part != ''):
-                # and it is indeed a part number, add it to the result
-                if is_part > 0:
-                    result_part_1 += int(part)
-                
-                # if it touched a gear add it to the list
-                if is_gear_part > 0:
-                    gear = gears[-1]
-                    if f"{gear}" in part_gears:
-                        result_part_2 += part_gears[f"{gear}"] * int(part)
-                    else:
-                        part_gears[f"{gear}"] = int(part)
+            # and it is indeed a part number, add it to the result
+            if is_part:
+                result_part_1 += int(part)
+            
+            # if it touched a gear add it to the list
+            if is_gear_part:
+                gear = gears[-1]
+                if f"{gear}" in part_gears:
+                    result_part_2 += part_gears[f"{gear}"] * int(part)
+                else:
+                    part_gears[f"{gear}"] = int(part)
             
             # reset part number value and check
             part =''
-            is_part = 0
-            is_gear_part = 0
+            is_part = False
+            is_gear_part = False
 
 # print the results
 print(f"--- Day {day}: ---")

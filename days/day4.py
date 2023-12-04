@@ -23,23 +23,17 @@ for line in input.splitlines():
     winning_numbers = [number for number in winning_numbers.split(' ') if number != '']
     my_numbers = [number for number in my_numbers.split(' ') if number != '']
     
-    is_first = True
     card_value = 0
     num_wins = 0
     
     # for every winning number, check if i have them in my numbers (better performance than the other way round)
     for num in winning_numbers:
         if num in my_numbers:
-            # if its the first simply add 1
-            if is_first:
-                card_value += 1
-                is_first = False
-            # else double the card value
-            else:
-                card_value *= 2
+            # set card_value to 1 if its first win, else double it
+            card_value = 1 if card_value == 0 else card_value * 2 
             # add win to win counter
             num_wins += 1
-            
+    
     # part 1
     result_part_1 += card_value
     

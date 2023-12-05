@@ -20,8 +20,8 @@ for line in input.splitlines():
     
     # parse winning and my numbers
     winning_numbers, my_numbers = numbers.split(' | ')
-    winning_numbers = winning_numbers.split()
-    my_numbers = my_numbers.split()
+    winning_numbers = set(winning_numbers.split())
+    my_numbers = set(my_numbers.split())
     
     card_value = 0
     num_wins = 0

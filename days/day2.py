@@ -12,7 +12,7 @@ input = helpers.read_input(day, test=False)
 result_part_1 = 0
 result_part_2 =  0
 
-for line in input.splitlines():
+for line in input:
     # split the line to get the game id and sets
     game, sets = line.split(':')
     
@@ -31,5 +31,5 @@ for line in input.splitlines():
 
 # print the results
 print(f"--- Day {day}: ---")
-print(f"Part 1: {result_part_1}")
-print(f"Part 2: {result_part_2}")
+print(f"Part 1: {result_part_1}") # 2679
+print(f"Part 2: {result_part_2}") # 77607

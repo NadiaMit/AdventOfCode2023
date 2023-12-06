@@ -69,8 +69,6 @@ def check_part(array, y, x, gearCheck=False):
     
     return (False, (0,0))
 
-lines = input.splitlines()
-
 result_part_1 = 0
 result_part_2 =  0
 
@@ -81,19 +79,19 @@ is_gear_part = False
 gears = []
 part_gears = {}
 
-for y in range(len(lines)):
-    for x in range(len(lines[y])):
+for y in range(len(input)):
+    for x in range(len(input[y])):
         # save part number for sum if its a digit
-        if(lines[y][x].isdigit()):
-            part+=lines[y][x]
+        if(input[y][x].isdigit()):
+            part+=input[y][x]
             
             # check if its a part number
-            check, _coordinates = check_part(lines, y, x)
+            check, _coordinates = check_part(input, y, x)
             if check:
                 is_part = True
             
             # check if it touches a gear
-            check, coordinates = check_part(lines, y, x, gearCheck=True)
+            check, coordinates = check_part(input, y, x, gearCheck=True)
             if check:
                 is_gear_part = True
                 gears.append(coordinates)
@@ -119,6 +117,6 @@ for y in range(len(lines)):
 
 # print the results
 print(f"--- Day {day}: ---")
-print(f"Part 1: {result_part_1}")
-print(f"Part 2: {result_part_2}")
+print(f"Part 1: {result_part_1}") # 507214
+print(f"Part 2: {result_part_2}") # 72553319
 

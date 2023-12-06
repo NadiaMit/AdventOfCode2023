@@ -12,7 +12,7 @@ input = helpers.read_input(day, test=False)
 # part 1
 result_part_1 = 0
 
-for line in input.splitlines():
+for line in input:
     # get out all digits of the line
     digits = [char for char in line if char.isdigit()]
     # add only the first and last digit to the result
@@ -45,7 +45,7 @@ string_digits = {
 
 result_part_2 = 0
 
-for line in input.splitlines():
+for line in input:
     # find all occourences of a number or written number in the string (even if overlapping or double)
     digits = re.findall("(?=([0-9]|one|two|three|four|five|six|seven|eight|nine))", line)
     # add only the first and last digit to the result
@@ -54,5 +54,5 @@ for line in input.splitlines():
 
 # print the results
 print(f"--- Day {day}: ---")
-print(f"Part 1: {result_part_1}")
-print(f"Part 2: {result_part_2}")
+print(f"Part 1: {result_part_1}") # 55607
+print(f"Part 2: {result_part_2}") # 55291

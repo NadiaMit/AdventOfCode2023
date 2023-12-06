@@ -4,7 +4,7 @@ import helpers as helpers
 
 # get daily input
 day = helpers.get_current_day(__file__)
-input = helpers.read_input(day, test=False).splitlines()
+input = helpers.read_input(day, test=False)
 
 # code for both parts
 # parse times and distances

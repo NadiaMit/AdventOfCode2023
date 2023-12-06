@@ -10,9 +10,9 @@ input = helpers.read_input(day, test=False)
 
 # code for both parts
 result_part_1 = 0
-card_instances = np.ones(len(input.splitlines()), dtype=int)
+card_instances = np.ones(len(input), dtype=int)
 
-for line in input.splitlines():
+for line in input:
     card, numbers = line.split(': ') 
     
     # parse card number

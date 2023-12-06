@@ -4,7 +4,7 @@ import helpers as helpers
 
 # get daily input
 day = helpers.get_current_day(__file__)
-input = helpers.read_input(day, test=False)
+input = helpers.read_input(day, split_lines=False, test=False)
 
 # code for both parts
 # parse seeds and mappings

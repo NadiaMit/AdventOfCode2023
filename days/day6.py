@@ -15,11 +15,11 @@ distances = input[1].strip().split(':')[1].split()
 # calculate the number of ways to win
 def calculate_num_ways(time, distance):
     # use quadratic formula
-    sqare_root = math.sqrt(time**2 - (4 * distance))
-    min = int(((-time) + sqare_root)/-2)
-    max = int(((-time) - sqare_root)/-2)
+    sqare_root = math.sqrt(time**2 - (4 * (distance + 0.001)))
+    min = math.ceil(((-time) + sqare_root)/-2)
+    max = math.floor(((-time) - sqare_root)/-2)
     
-    return (max - min)
+    return (max - min) + 1
 
 # part 1
 result_part_1 = 1

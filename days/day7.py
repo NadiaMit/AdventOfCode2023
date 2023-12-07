@@ -131,26 +131,21 @@ class Hand:
         self.sort_string = convert_to_sort_string(cards, part)
 
 
+def calculate_hands_sum(part):
+    # parse hands as touple of cards and bid value
+    hands = [Hand(cards, int(bid), part) for line in input for cards, bid in [line.split()]]
+    
+    # sort hands based on type and secondly based on the value of the cards
+    hands.sort(key=lambda x: ([x.type.value], [x.sort_string]))
+
+    # calculate each value using the rank = index + 1 and the bid number of the cards, then sum it up
+    return sum([hand.bid * (index+1) for index, hand in enumerate(hands)])
+
 # part 1
-# parse hands as touple of cards and bid value
-hands = [Hand(cards, int(bid), 1) for line in input for cards, bid in [line.split()]]
-
-# sort hands based on type and secondly based on the value of the cards
-hands.sort(key=lambda x: ([x.type.value], [x.sort_string]))
-
-# calculate each value using the rank = index + 1 and the bid number of the cards, then sum it up
-result_part_1 = sum([hand.bid * (index+1) for index, hand in enumerate(hands)])
-
+result_part_1 = calculate_hands_sum(part=1)
 
 # part 2
-# parse hands as touple of cards and bid value
-hands = [Hand(cards, int(bid), 2) for line in input for cards, bid in [line.split()]]
-
-# sort hands based on type and secondly based on the value of the cards
-hands.sort(key=lambda x: ([x.type.value], [x.sort_string]))
-
-# calculate each value using the rank = index + 1 and the bid number of the cards, then sum it up
-result_part_2 = sum([hand.bid * (index+1) for index, hand in enumerate(hands)])
+result_part_2 = calculate_hands_sum(part=2)
 
 # print the results
 print(f"--- Day {day}: ---")

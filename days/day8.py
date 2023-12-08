@@ -53,9 +53,17 @@ def calculate_steps(curr_node, goal_nodes):
 result_part_1 = calculate_steps('AAA', ['ZZZ'])
 
 # part 2
-result_part_2 =  0
+# find all start and end nodes
+start_nodes = [node for node in nodes.keys() if re.match(r"\w{2}A", node)]
+end_nodes = [node for node in nodes.keys() if re.match(r"\w{2}Z", node)]
+
+# find steps to end node for every node = end of first cycle
+steps = [calculate_steps(node, end_nodes) for node in start_nodes]
+
+# find least common multiple of the number of steps until end node of every node
+result_part_2 =  math.lcm(*steps)
 
 # print the results
 print(f"--- Day {day}: ---")
 print(f"Part 1: {result_part_1}") # 18727
-print(f"Part 2: {result_part_2}")
+print(f"Part 2: {result_part_2}") # 18024643846273

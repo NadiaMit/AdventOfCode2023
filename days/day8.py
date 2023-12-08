@@ -2,6 +2,7 @@ import sys
 sys.path.insert(1, sys.path[0].replace("days", "helpers"))
 import helpers as helpers
 import re
+import math
 
 # get daily input
 day = helpers.get_current_day(__file__)
@@ -18,39 +19,43 @@ for line in input[2:]:
     node, left, right = re.findall(r"\b\w{3}\b", line)
     nodes[node] = (left, right)
 
-
-# go through nodes starting at AAA until ZZZ is reached and count number of steps
-result_part_1 = 0
-
-curr_node = 'AAA'
-goal_node = 'ZZZ'
-step_idx = 0
-
-while curr_node != goal_node:
-    # get left and right child nodes of current node
-    left, right = nodes[curr_node]
+# function that follows instructions and returns steps
+def calculate_steps(curr_node, goal_nodes):
+    step_idx = 0
+    num_steps = 0
     
-    # next step = left
-    if instructions[step_idx] == 'L':
-        curr_node = left
+    # go through nodes starting at curr_node until goal_node is reached and count number of steps
+    while curr_node not in goal_nodes:
+        # get left and right child nodes of current node
+        left, right = nodes[curr_node]
         
-    # next step = right
-    elif instructions[step_idx] == 'R':
-        curr_node = right
+        # next step = left
+        if instructions[step_idx] == 'L':
+            curr_node = left
+        
+        # next step = right
+        elif instructions[step_idx] == 'R':
+            curr_node = right
+        
+        # increment step counter
+        num_steps += 1
+        
+        # increment step index
+        if (step_idx + 1) == len(instructions):
+            step_idx = 0
+        else:
+            step_idx += 1
     
-    # increment step counter
-    result_part_1 += 1
-    
-    # increment step index
-    if (step_idx + 1) == len(instructions):
-        step_idx = 0
-    else:
-        step_idx += 1
+    return num_steps
+
+# part 1
+# go through nodes starting at AAA until ZZZ is reached and count number of steps
+result_part_1 = calculate_steps('AAA', ['ZZZ'])
 
 # part 2
 result_part_2 =  0
 
 # print the results
 print(f"--- Day {day}: ---")
-print(f"Part 1: {result_part_1}")
+print(f"Part 1: {result_part_1}") # 18727
 print(f"Part 2: {result_part_2}")

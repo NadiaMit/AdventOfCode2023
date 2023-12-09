@@ -9,11 +9,11 @@ input = helpers.read_input(day, test=False)
 # code for both parts
 # subtraction function for part 2
 def sub(list):
-    value = list[-2] - list[-1]
-    reverse_list = reversed(list[0:-2])
-    
-    for num in reverse_list:
-        value = num - value
+    value = 0
+    sign = 1
+    for num in list:
+        value += num*sign
+        sign *= -1
     
     return value
 

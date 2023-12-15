@@ -75,7 +75,8 @@ if x < len(input[0]) - 1:
 
 # take first step in direction
 coords = next_coordinates(start, direction)
-cycle_distance = 1
+cycle = {start}
+result_part_1 = 1
 
 # go through all pipes until start is reached again and count the steps
 while coords != start:
@@ -83,16 +84,47 @@ while coords != start:
     pipe = input[y][x]
     direction = next_direction(pipe, direction)
     coords = next_coordinates(coords, direction)
-    cycle_distance += 1
+    cycle.add(coords)
+    result_part_1 += 1
 
 
 # part 1
-result_part_1 = int(cycle_distance/2)
+result_part_1 = int(result_part_1/2)
 
 # part 2
-result_part_2 =  0
+result_part_2 = 0
+
+# go through map and check if coordinate is inside the loop or not
+for y in range(len(input)):
+    inside = False
+    # for L--7 and F--J pipes
+    prev_pipe = ''
+    
+    for x in range(len(input[y])):
+        # if a coordinate is not part of the pipe cycle and the inside the loop add it to the result
+        if (y, x) not in cycle:
+            if inside is True:
+                result_part_2 += 1
+        
+        # if it's part of the cycle check what kind of pipe it is and handle inside loop boolean
+        else:
+            pipe = input[y][x]
+            # handle cycle cases and set inside true respectively
+            if pipe == '|':
+                inside = not inside
+            
+            # check if L--7 or F--J pipes happen, since that is basically |
+            elif pipe == 'L' or pipe == 'F':
+                prev_pipe = pipe
+            elif pipe == '7' or pipe == 'J':
+                pipe_seq = prev_pipe + pipe
+                if pipe_seq == 'L7' or pipe_seq == 'FJ':
+                    inside = not inside
+                else:
+                    prev_pipe = ''
+
 
 # print the results
 print(f"--- Day {day}: ---")
 print(f"Part 1: {result_part_1}") # 6815
-print(f"Part 2: {result_part_2}")
+print(f"Part 2: {result_part_2}") # 269

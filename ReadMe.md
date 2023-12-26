@@ -5,6 +5,8 @@
 
 This is my try on the Advent of code of 2023 challanges in Python. I've decided to use Python because I've always wanted to learn it since everyone seems to really like it and also because I need it for some classes in University.
 
+I managed to complete 13 days (some only part 1) and got a total of 25 stars.
+
 ## Structure
 
 - `days`: the code for each day will be in the days folder as a `dayX.py` file.

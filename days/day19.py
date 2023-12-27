@@ -24,7 +24,7 @@ class Rating:
         self.sum = int(x) + int(m) + int(a) + int(s)
 
 class Condition:
-    check: str
+    check: str = None
     send: str
     has_check: bool = False
     
@@ -37,8 +37,6 @@ class Condition:
             self.send = condition[1]
         else:
             self.send = condition[0]
-            self.check = None
-            self.has_check = False
 
 # parse workflow string to workflow dict
 def parse_workflow(dict, workflow):
@@ -66,11 +64,8 @@ for rating in ratings:
     while workflow_name != "R" and workflow_name != "A":
         workflow = workflows[workflow_name]
         
-        condition = None
-        for i in range(len(workflow)):
-            # get the current condition from the workflow
-            condition = workflow[i]
-            # if it has a check condition evaluate it
+        for condition in workflow:
+            # if it has a check, evaluate it
             if condition.has_check:
                 # if true, set the workflow name to the send value and break the loop
                 if eval(condition.check, rating.ratings):

@@ -21,7 +21,7 @@ class Rating:
             "a": int(a),
             "s": int(s)
         }
-        self.sum = int(x) + int(m) + int(a) + int(s)
+        self.sum = sum(self.ratings.values())
 
 class Condition:
     check: str = None
